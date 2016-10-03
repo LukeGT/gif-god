@@ -1,18 +1,35 @@
 {
   "name": "gif-god",
   "version": "0.1.0",
+  "description": "A gif editor that doesn't suck too bad",
+  "author": "Luke Tsekouras",
+  "license": "ISC",
   "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/LukeGT/gif-god.git"
+  },
+  "keywords": [
+    "gif",
+    "god",
+    "creator",
+    "editor"
+  ],
+  "bugs": {
+    "url": "https://github.com/LukeGT/gif-god/issues"
+  },
+  "homepage": "https://github.com/LukeGT/gif-god#readme",
   "devDependencies": {
     "react-scripts": "0.6.1"
   },
   "dependencies": {
     "react": "^15.3.2",
     "react-dom": "^15.3.2"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
   }
 }
