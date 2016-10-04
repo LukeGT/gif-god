@@ -1,9 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+
+import add_media from './actions/add-media';
+
+import App from './views/App';
 import './index.css';
 
 ReactDOM.render(
   <App />,
   document.getElementById('root')
 );
+
+add_media();

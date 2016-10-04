@@ -10,10 +10,13 @@ class AppBarButton extends Component {
   };
 
   render() {
-    const styles = getStyles(this.props, this.context);
+    const style = getStyles(this.props, this.context).flatButton;
+    if (!this.props.label) {
+      style.minWidth = '48px';
+    }
     return <FlatButton
       {...this.props}
-      style={styles.flatButton}
+      style={style}
     />;
   }
 }

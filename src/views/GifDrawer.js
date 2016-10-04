@@ -9,7 +9,9 @@ import AddBox from 'material-ui/svg-icons/content/add-box'
 import ContentCopy from 'material-ui/svg-icons/content/content-copy'
 import Settings from 'material-ui/svg-icons/action/settings'
 
-import dispatcher from './Dispatcher';
+import event from '../dispatchers/event';
+
+import './GifDrawer.css'
 
 class GifDrawer extends Component {
 
@@ -19,7 +21,7 @@ class GifDrawer extends Component {
 
   constructor() {
     super()
-    dispatcher.on('toggle-drawer', this.toggle);
+    event.on('toggle-drawer', this.toggle);
   }
 
   set_open = (open) => {

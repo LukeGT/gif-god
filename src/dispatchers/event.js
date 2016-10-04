@@ -25,4 +25,4 @@ class EventDispatcher {
 
 const event_dispatcher = new EventDispatcher();
 
-export default event_dispatcher
+export default event_dispatcher;

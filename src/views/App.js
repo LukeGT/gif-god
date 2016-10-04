@@ -3,10 +3,12 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
+import FileDialogue from './FileDialogue';
 import GifAppBar from './GifAppBar';
 import GifDrawer from './GifDrawer';
 import GifCanvas from './GifCanvas';
 import GifTimeline from './GifTimeline';
+import GifProps from './GifProps';
 
 import './App.css';
 
@@ -26,13 +28,20 @@ class App extends Component {
       >
         <GifAppBar />
         <GifDrawer />
-        <GifCanvas
-          style={{
-            flexGrow: 1,
-            zIndex: -1000,
-          }}
-        />
+        <div style={{
+          display: 'flex',
+          flexGrow: 1,
+        }}>
+          <GifCanvas
+            style={{
+              flexGrow: 1,
+              zIndex: -1000,
+            }}
+          />
+          <GifProps />
+        </div>
         <GifTimeline />
+        <FileDialogue />
       </div>
     </MuiThemeProvider>;
   }

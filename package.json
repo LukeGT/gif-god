@@ -30,9 +30,11 @@
   },
   "dependencies": {
     "flux": "^3.0.0",
+    "gify-parse": "^1.0.6",
     "material-ui": "^0.15.4",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
-    "react-tap-event-plugin": "^1.0.0"
+    "react-tap-event-plugin": "^1.0.0",
+    "uuid": "^2.0.3"
   }
 }

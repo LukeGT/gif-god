@@ -1,0 +1,17 @@
+.timeline-layer {
+  height: 50px;
+  line-height: 50px;
+  border-bottom: 1px solid #EEE;
+  display: flex;
+}
+
+.timeline-layer .header {
+  width: 10%;
+  min-width: 200px;
+  padding: 0 10px;
+  border-right: 1px solid #EEE;
+}
+
+.timeline-layer .spans {
+  flex-grow: 1;
+}
