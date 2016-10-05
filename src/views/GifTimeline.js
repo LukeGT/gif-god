@@ -9,18 +9,11 @@ class GifTimeline extends Component {
 
   constructor() {
     super();
-    store.change( (data) => {
-      data.layers = [];
-    });
-    store.register( () => this.forceUpdate() );
+    store.register_component(this);
   }
 
   render() {
-    return <Paper
-      style={{
-        backgroundColor: 'white',
-      }}
-    >
+    return <Paper>
       {store.data.layers.map( (layer, i) => {
         return <TimelineLayer key={layer.id} {...layer} />
       })}

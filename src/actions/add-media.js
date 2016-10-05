@@ -11,7 +11,10 @@ export default () => {
         id: uuid.v4(),
         name,
         media,
-        spans: [],
+        spans: [{
+          from: 0,
+          to: Math.floor(Math.random()*20), // TODO: determine from media
+        }],
         props: {},
       });
     });

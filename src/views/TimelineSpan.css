@@ -1,0 +1,21 @@
+.timeline-span {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.timeline-span-handle {
+  width: 15px;
+  height: 90%;
+  z-index: 100;
+}
+
+.timeline-span-handle:hover {
+  cursor: pointer;
+  opacity: 0.75;
+}
+
+.timeline-span-centre {
+  flex-grow: 1;
+  height: 70%;
+}

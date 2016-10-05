@@ -11,6 +11,10 @@ class StoreDispatcher {
     return this.dispatcher.register(callback);
   }
 
+  register_component(component) {
+    return this.register(() => component.forceUpdate());
+  }
+
   unregister(id) {
     return this.dispatcher.unregister(id);
   }

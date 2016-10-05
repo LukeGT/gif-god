@@ -10,8 +10,12 @@
   min-width: 200px;
   padding: 0 10px;
   border-right: 1px solid #EEE;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .timeline-layer .spans {
   flex-grow: 1;
+  position: relative;
 }
