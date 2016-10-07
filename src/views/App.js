@@ -10,11 +10,19 @@ import GifCanvas from './GifCanvas';
 import GifTimeline from './GifTimeline';
 import GifProps from './GifProps';
 
+import event from '../dispatchers/event';
+
 import './App.css';
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
+
+for (var event_name of ['drag', 'dragend', 'mouseup', 'mousemove']) {
+  document.addEventListener(event_name, ((event_name) => (e) => {
+    event.fire(event_name, e);
+  })(event_name));
+}
 
 class App extends Component {
   render() {

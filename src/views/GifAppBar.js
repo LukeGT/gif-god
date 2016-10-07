@@ -8,6 +8,8 @@ import SettingsApplications from 'material-ui/svg-icons/action/settings-applicat
 import AppBarButton from './AppBarButton';
 import event from '../dispatchers/event';
 
+import './GifAppBar.css';
+
 class GifAppBar extends Component {
 
   render() {
@@ -17,7 +19,7 @@ class GifAppBar extends Component {
         event.fire('toggle-drawer');
       }}
       iconElementRight={
-        <div>
+        <div id="app-bar-buttons">
           <AppBarButton
             label="Add Media"
             icon={<Add />}

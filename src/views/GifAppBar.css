@@ -1,0 +1,19 @@
+/* !important is a crime, but so are the inline styles that MaterialUI decided to use */
+
+#app-bar-buttons span {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+#app-bar-buttons button {
+  min-width: 48px !important;
+}
+
+@media (max-width: 500px) {
+  #app-bar-buttons span {
+    display: none;
+  }
+  #app-bar-buttons svg {
+    margin-left: 0 !important;
+  }
+}

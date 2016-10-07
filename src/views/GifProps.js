@@ -26,7 +26,7 @@ class GifProps extends Component {
   render() {
     return <Paper
       style={{
-        flexGrow: this.state.open ? 1 : 0,
+        width: this.state.open ? 400 : 0,
       }}
     />
   }

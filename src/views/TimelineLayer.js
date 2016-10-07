@@ -5,14 +5,19 @@ import TimelineSpan from './TimelineSpan';
 import './TimelineLayer.css'
 
 class TimelineLayer extends Component {
+
+  get_spans_width() {
+    return this.spans.offsetWidth;
+  }
+
   render() {
     return <div
       className='timeline-layer'
     >
-      <div className='header'>{this.props.name}</div>
-      <div className='spans'>
-        {this.props.spans.map((span, i) => {
-          return <TimelineSpan key={i} {...span} />
+      <div className='header'>{this.props.data.name}</div>
+      <div className='spans' ref={(spans) => { this.spans = spans }}>
+        {this.props.data.spans.map((span, i) => {
+          return <TimelineSpan key={i} parent={this} data={span} />
         })}
       </div>
     </div>

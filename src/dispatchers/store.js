@@ -20,8 +20,9 @@ class StoreDispatcher {
   }
 
   change(modifier) {
-    modifier(this.data);
-    return this.dispatcher.dispatch(this.data);
+    if (modifier(this.data) !== false) {
+      return this.dispatcher.dispatch(this.data);
+    }
   }
 }
 
