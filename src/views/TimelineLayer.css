@@ -6,8 +6,8 @@
 }
 
 .timeline-layer .header {
-  width: 10%;
-  min-width: 200px;
+  width: 20%;
+  max-width: 300px;
   padding: 0 10px;
   border-right: 1px solid #EEE;
   white-space: nowrap;

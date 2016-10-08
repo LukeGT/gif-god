@@ -13,7 +13,7 @@ export default () => {
         media,
         spans: [{
           from: 0,
-          to: Math.floor(Math.random()*20), // TODO: determine from media
+          to: Math.floor(Math.random()*19) + 1, // TODO: determine from media
         }],
         props: {},
       });

@@ -5,7 +5,8 @@
 }
 
 .timeline-span-handle {
-  width: 15px;
+  width: 33%;
+  max-width: 15px;
   height: 90%;
   z-index: 100;
 }

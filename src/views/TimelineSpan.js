@@ -22,43 +22,61 @@ class TimelineSpan extends Component {
 
     event.on('mouseup', this.stopDragging.bind(this));
     event.on('dragend', this.stopDragging.bind(this));
-    event.on('mousemove', (event) => {
-
-      if (!this.state.dragging) { return }
-
-      const span = this.props.data;
-      const frame_width = this.props.parent.get_spans_width()/store.data.props.frames;
-      const frame_diff = Math.floor((event.clientX-this.state.start_x)/frame_width+0.5);
-
-      store.change(() => {
-
-        var new_from, new_to;
-
-        if (this.state.target === 'from' || this.state.target === 'both') {
-          new_from = Math.max(0, Math.min(this.state.prev_props.from + frame_diff, store.data.props.frames));
-        }
-        if (this.state.target === 'to' || this.state.target === 'both') {
-          new_to = Math.max(0, Math.min(this.state.prev_props.to + frame_diff, store.data.props.frames));
-        }
-
-        var changed = false;
-
-        if (span.from !== new_from) {
-          span.from = new_from
-          changed = true;
-        }
-        if (span.to !== new_to) {
-          span.to = new_to
-          changed = true;
-        }
-
-        return changed;
-      })
-    });
+    event.on('touchend', this.stopDragging.bind(this));
+    event.on('mousemove', this.mouseMove.bind(this));
+    event.on('touchmove', this.mouseMove.bind(this));
   }
 
   stopDragging() {
     this.setState({ dragging: false });
+  }
+
+  mouseMove(event) {
+
+    if (!this.state.dragging) { return }
+
+    const frame_width = this.props.parent.get_spans_width()/store.data.props.frames;
+    var frame_diff = Math.floor((event.clientX-this.state.start_x)/frame_width+0.5);
+
+    // Limit movement to within the frames of the project
+    for (var t of ['from', 'to']) {
+      if (this.state.target === t || this.state.target === 'both') {
+        frame_diff = Math.max(
+          -this.state.prev_props[t],
+          Math.min(
+            frame_diff,
+            store.data.props.frames - this.state.prev_props[t]
+          )
+        )
+      }
+    }
+
+    // Don't let the span become less than 1 frame long
+    const from_to_diff = this.state.prev_props.to - this.state.prev_props.from - 1;
+    if (this.state.target === 'from') {
+      frame_diff = Math.min(from_to_diff, frame_diff)
+    }
+    if (this.state.target === 'to') {
+      frame_diff = Math.max(-from_to_diff, frame_diff)
+    }
+
+    // Modify the state
+    store.change(() => {
+
+      const span = this.props.data;
+      var changed = false;
+
+      for (var t of ['from', 'to']) {
+        if (this.state.target === t || this.state.target === 'both') {
+          if (span[t] !== this.state.prev_props[t] + frame_diff) {
+            span[t] = this.state.prev_props[t] + frame_diff;
+            changed = true;
+          }
+        }
+      }
+
+      return changed;
+    })
   }
 
   mouseDownFor(target) {
@@ -93,6 +111,7 @@ class TimelineSpan extends Component {
           borderBottomLeftRadius: '10px',
         }}
         onMouseDown={this.mouseDownFor('from')}
+        onTouchStart={this.mouseDownFor('from')}
       />
       <Paper
         className='timeline-span-centre'
@@ -101,6 +120,7 @@ class TimelineSpan extends Component {
           borderRadius: 0,
         }}
         onMouseDown={this.mouseDownFor('both')}
+        onTouchStart={this.mouseDownFor('both')}
       />
       <Paper
         className='timeline-span-handle'
@@ -110,6 +130,7 @@ class TimelineSpan extends Component {
           borderBottomRightRadius: '10px',
         }}
         onMouseDown={this.mouseDownFor('to')}
+        onTouchStart={this.mouseDownFor('to')}
       />
     </div>
   }

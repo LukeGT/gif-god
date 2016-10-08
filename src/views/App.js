@@ -18,7 +18,15 @@ import './App.css';
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
 
-for (var event_name of ['drag', 'dragend', 'mouseup', 'mousemove']) {
+const global_events = [
+  'drag',
+  'dragend',
+  'mouseup',
+  'mousemove',
+  'touchmove',
+  'touchend',
+];
+for (var event_name of global_events) {
   document.addEventListener(event_name, ((event_name) => (e) => {
     event.fire(event_name, e);
   })(event_name));
