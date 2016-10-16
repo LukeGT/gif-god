@@ -31,6 +31,7 @@
   "dependencies": {
     "flux": "^3.0.0",
     "gify-parse": "^1.0.6",
+    "libgif-js": "git+https://github.com/LukeGT/libgif-js.git",
     "material-ui": "^0.15.4",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",

@@ -15,12 +15,12 @@ class GifTimeline extends Component {
   render() {
     return <Paper
       style={{
-        '-webkit-touch-callout': 'none',
-        '-webkit-user-select': 'none',
-        '-khtml-user-select': 'none',
-        '-moz-user-select': 'none',
-        '-ms-user-select': 'none',
-        'user-select': 'none',
+        WebkitTouchCallout: 'none',
+        WebkitUserSelect: 'none',
+        KhtmlUserSelect: 'none',
+        MozUserSelect: 'none',
+        MsUserSelect: 'none',
+        userSelect: 'none',
         overflow: 'hidden',
       }}
     >

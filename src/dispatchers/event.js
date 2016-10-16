@@ -21,6 +21,10 @@ class EventDispatcher {
   fire(event, data) {
     this.dispatcher.dispatch({ event, data });
   }
+
+  fire_later(event, data) {
+    setTimeout(() => this.fire(event, data));
+  }
 }
 
 const event_dispatcher = new EventDispatcher();

@@ -3,6 +3,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
+import ErrorDialogue from './ErrorDialogue';
 import FileDialogue from './FileDialogue';
 import GifAppBar from './GifAppBar';
 import GifDrawer from './GifDrawer';
@@ -58,6 +59,7 @@ class App extends Component {
         </div>
         <GifTimeline />
         <FileDialogue />
+        <ErrorDialogue />
       </div>
     </MuiThemeProvider>;
   }

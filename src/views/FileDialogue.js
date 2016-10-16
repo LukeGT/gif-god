@@ -22,7 +22,6 @@ class FileDialogue extends Component {
       onChange={ () => {
         for (var file of this.input.files) {
           event.fire('add-layer', {
-            name: file.name,
             media: file,
           })
         }

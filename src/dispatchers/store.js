@@ -12,7 +12,7 @@ class StoreDispatcher {
   }
 
   register_component(component) {
-    return this.register(() => component.forceUpdate());
+    return this.register(() => setTimeout(() => component.forceUpdate()));
   }
 
   unregister(id) {
@@ -23,6 +23,10 @@ class StoreDispatcher {
     if (modifier(this.data) !== false) {
       return this.dispatcher.dispatch(this.data);
     }
+  }
+
+  change_later(modifier) {
+    setTimeout(() => this.change(modifier));
   }
 }
 

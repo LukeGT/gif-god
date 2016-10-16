@@ -35,7 +35,7 @@ class TimelineSpan extends Component {
 
     if (!this.state.dragging) { return }
 
-    const frame_width = this.props.parent.get_spans_width()/store.data.props.frames;
+    const frame_width = this.props.parent.get_spans_width()/store.data.props.frame_num;
     var frame_diff = Math.floor((event.clientX-this.state.start_x)/frame_width+0.5);
 
     // Limit movement to within the frames of the project
@@ -45,7 +45,7 @@ class TimelineSpan extends Component {
           -this.state.prev_props[t],
           Math.min(
             frame_diff,
-            store.data.props.frames - this.state.prev_props[t]
+            store.data.props.frame_num - this.state.prev_props[t]
           )
         )
       }
@@ -98,8 +98,8 @@ class TimelineSpan extends Component {
       className='timeline-span'
       style={{
         position: 'absolute',
-        left: `${span.from/data.props.frames*100}%`,
-        width: `${(span.to - span.from)/data.props.frames*100}%`,
+        left: `${span.from/data.props.frame_num*100}%`,
+        width: `${(span.to - span.from)/data.props.frame_num*100}%`,
         transition: 'all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms',
       }}
     >
