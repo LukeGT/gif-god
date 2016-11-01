@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import TimelineSpan from './TimelineSpan';
 
-import './TimelineLayer.css'
+import './GifTimeline.css'
 
 class TimelineLayer extends Component {
 

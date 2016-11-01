@@ -11,7 +11,7 @@ import './index.css';
 store.change( (data) => {
   data.layers = [];
   data.props = {
-    frames: 20, // TODO: set this based on the first media added
+    frame_num: 20,
   };
 });
 

@@ -1,39 +1,39 @@
 import uuid from 'uuid';
-import gify from 'gify-parse';
-import libgif from 'libgif-js';
+import pixel from 'pixel';
 
 import event from '../dispatchers/event';
 import store from '../dispatchers/store';
 
 
-const loaders = {
-  'image/gif': (name, data) => {
+function pixel_loader(name, data) {
 
-    // TODO: write my own damn lib to do the things that I want.
-    new libgif().load_raw(data, (gif) => {
+  pixel.parse(data).then( (frames) => {
 
-      const frame_num = gif.images.length;
+    store.change( (data) => {
 
-      store.change( (data) => {
+      if (data.layers.length === 0) {
+        data.props.frame_num = Math.max(frames.length, data.props.frame_num);
+      }
 
-        if (data.layers.length === 0) {
-          data.props.frame_num = frame_num;
-        }
-
-        data.layers.push({
-          id: uuid.v4(),
-          name,
-          frames: gif.images,
-          spans: [{
-            from: 0,
-            to: Math.min(data.props.frame_num, gif.images.length),
-          }],
-          props: {},
-        });
-
+      data.layers.push({
+        id: uuid.v4(),
+        name,
+        frames,
+        spans: [{
+          from: 0,
+          to: Math.min(data.props.frame_num, frames.length),
+        }],
+        props: {},
       });
     });
-  },
+  });
+}
+
+const loaders = {
+  'image/gif': pixel_loader,
+  'image/png': pixel_loader,
+  'image/jpeg': pixel_loader,
+  'iamge/bmp': pixel_loader,
 };
 
 export default () => {

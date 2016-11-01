@@ -1,0 +1,51 @@
+.timeline {
+  position: relative;
+  padding-top: 20px;
+}
+
+.scrubber-rail {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.scrubber-rail .scrubber {
+  position: relative;
+  z-index: 10;
+  height: 20px;
+}
+
+.scrubber-rail .line {
+  position: absolute;
+  width: 5%;
+  height: 100%;
+  bottom: 0;
+  opacity: 0.25;
+  background-color: purple;
+}
+
+.timeline-layer {
+  height: 50px;
+  line-height: 50px;
+}
+
+.timeline-layer, .scrubber-rail {
+  border-top: 1px solid #EEE;
+  display: flex;
+}
+
+.timeline-layer .header, .scrubber-rail .header {
+  width: 20%;
+  max-width: 300px;
+  padding: 0 10px;
+  border-right: 1px solid #EEE;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.timeline-layer .spans, .scrubber-rail .scrubber-box {
+  flex-grow: 1;
+  position: relative;
+}
